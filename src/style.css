@@ -1,9 +1,11 @@
 body {
-  background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
+  background: #fcecdd;
 }
 
 form {
+  display: block;
   margin: 25px 25px;
+  text-align: center;
 }
 i {
   display: block;
@@ -17,12 +19,9 @@ img {
 button {
   display: inline;
 }
-.icon-current-day {
-  color: #f83600;
-  font-size: medium;
-  display: block;
-  text-align: right;
-  font-size: 40px;
+
+.weather-icon {
+  size: 50px;
 }
 .icon {
   font-size: medium;
@@ -42,7 +41,7 @@ button {
   color: grey;
 }
 .maintemperature {
-  font-size: 60px;
+  font-size: 100px;
 }
 .advice {
   color: grey;

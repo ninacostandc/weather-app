@@ -13,7 +13,7 @@ function showTemp (response){
   country.innerHTML=response.data.sys.country;
   windspeed.innerHTML=response.data.wind.speed;
   humidity.innerHTML=response.data.main.humidity;
-  icon.setAttribute (src,`http://openweathermap.org/img/wn/${response.data.weather[0].icon}d@2x.png`);
+  icon.setAttribute ("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   
 }
 

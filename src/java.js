@@ -7,7 +7,9 @@ function showTemp (response){
   let windspeed=document.querySelector("#windspeed");
   let humidity = document.querySelector ("#humidity");
 
-  temperature.innerHTML = Math.round(response.data.main.temp);
+  celsiustemp=response.data.main.temp;
+
+  temperature.innerHTML = Math.round(celsiustemp);
   description.innerHTML = response.data.weather[0].description;
   city.innerHTML = response.data.name;
   country.innerHTML=response.data.sys.country;
@@ -29,11 +31,30 @@ function showCity (event) {
   search(city.value);
 }
 
-search("Porto")
+function displayfarhtemp (event){
+  event.preventDefault();
+  let temperature = document.querySelector ("#mainTemperature")
+  let farhtemperature = (celsiustemp*9)/5+32;
+  temperature.innerHTML=Math.round(farhtemperature);
+}
+
+function displaycelsiustemp (event){
+  event.preventDefault();
+  let temperature = document.querySelector ("#mainTemperature");
+  temperature.innerHTML=Math.round(celsiustemp);
+}
+let celsiustemp=null;
 
 let form = document.querySelector("#search-form")
 form.addEventListener ("submit", showCity)
 
+let farhlink = document.querySelector("#farhtemp");
+farhlink.addEventListener("click", displayfarhtemp)
+
+let celsiuslink = document.querySelector("#celsiustemp");
+celsiuslink.addEventListener("click", displaycelsiustemp)
+
+search("Porto")
 
 let now = new Date();
 let hours = now.getHours();
@@ -50,3 +71,5 @@ let day = weekdays[now.getDay()];
 
 let displayDay = document.querySelector (".display-day-time")
 displayDay.innerHTML= `${day}, ${hours}:${minutes}`
+
+

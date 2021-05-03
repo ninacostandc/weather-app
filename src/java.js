@@ -1,3 +1,20 @@
+function formatdate (timestamp){
+let now = new Date(timestamp);
+let hours = now.getHours();
+if (hours<10){
+  hours=`0${hours}`;
+}
+let minutes = now.getMinutes();
+if (minutes<10){
+  minutes=`0${minutes}`;
+}
+let weekdays =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let day = weekdays[now.getDay()];
+return `${day}, ${hours}:${minutes}`;
+
+
+}
+
 function showTemp (response){
   let temperature = document.querySelector("#mainTemperature");
   let description = document.querySelector ("#description");
@@ -6,6 +23,7 @@ function showTemp (response){
   let country=document.querySelector ("#country");
   let windspeed=document.querySelector("#windspeed");
   let humidity = document.querySelector ("#humidity");
+  let date =document.querySelector ("#display-day-time");
 
   celsiustemp=response.data.main.temp;
 
@@ -15,6 +33,8 @@ function showTemp (response){
   country.innerHTML=response.data.sys.country;
   windspeed.innerHTML=response.data.wind.speed;
   humidity.innerHTML=response.data.main.humidity;
+  date.innerHTML= formatdate(response.data.dt*1000);
+
   icon.setAttribute ("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   
 }
@@ -43,6 +63,7 @@ function displaycelsiustemp (event){
   let temperature = document.querySelector ("#mainTemperature");
   temperature.innerHTML=Math.round(celsiustemp);
 }
+
 let celsiustemp=null;
 
 let form = document.querySelector("#search-form")
@@ -55,21 +76,5 @@ let celsiuslink = document.querySelector("#celsiustemp");
 celsiuslink.addEventListener("click", displaycelsiustemp)
 
 search("Porto")
-
-let now = new Date();
-let hours = now.getHours();
-if (hours<10){
-  hours=`0${hours}`;
-}
-let minutes = now.getMinutes();
-if (minutes<10){
-  minutes=`0${minutes}`;
-}
-let weekdays =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-let day = weekdays[now.getDay()];
-
-
-let displayDay = document.querySelector (".display-day-time")
-displayDay.innerHTML= `${day}, ${hours}:${minutes}`
 
 

@@ -11,8 +11,29 @@ if (minutes<10){
 let weekdays =["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let day = weekdays[now.getDay()];
 return `${day}, ${hours}:${minutes}`;
+}
 
-
+function displayForescast (){
+  let forecastElement = document.querySelector ("#forecast");
+  let forecastHTML= `<div class="row">`;
+  let days = ["Mon", "Thu", "Wed", "Thu", "Fri"];
+  days.forEach(function(day){
+forcastHTML= forescastHTML + `
+      <div class="col-2">
+      <span class="forecast-day">${day}</span>
+        <div class="card">              
+         <div class="card-body">
+          <p class="card-text">
+            <span class="forecastmin">28º   </span>
+            <span class="forecastmax">32º</span>
+            </p> 
+            <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="" id="weather-icon-forecast" width="15">
+          </div>
+        </div>
+      </div>`
+    forecastHTML=forecastHTML + `</div>`;
+    forescastElement.innerHTML = forecastHTML;
+  }) 
 }
 
 function showTemp (response){
@@ -63,6 +84,8 @@ function displaycelsiustemp (event){
   let temperature = document.querySelector ("#mainTemperature");
   temperature.innerHTML=Math.round(celsiustemp);
 }
+
+
 
 let celsiustemp=null;
 

@@ -13,28 +13,29 @@ let day = weekdays[now.getDay()];
 return `${day}, ${hours}:${minutes}`;
 }
 
-function displayForecast (response){
-  let forescast = response.data.daily;
-  let forecastElement = document.querySelector ("#forecast");
-  let forecastHTML= `<div class="row">`;
-  
-  forecast.forEach(function(forecastDay){
-forcastHTML= forescastHTML + `
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (forecastDay) {
+    forecastHTML = forecastHTML + 
+      `
       <div class="col-2">
       <span class="forecast-day">${formatDay(forecastDay.dt)}</span>
         <div class="card">              
          <div class="card-body">
           <p class="card-text">
-            <span class="forecastmin">${math.round(forecastDay.temp.min)}º   </span>
-            <span class="forecastmax">${math.round(forecastDay.temp.max)}º </span>
+            <span class="forecastmin">${Math.round(forecastDay.temp.min)}º   </span>
+            <span class="forecastmax">${Math.round(forecastDay.temp.max)}º </span>
             </p> 
             <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" id="weather-icon-forecast" width="15">
           </div>
         </div>
-      </div>`
-    forecastHTML=forecastHTML + `</div>`;
-    forescastElement.innerHTML = forecastHTML;
-  }) 
+      </div>
+      `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
 }
 
 function formatDay(timestamp){

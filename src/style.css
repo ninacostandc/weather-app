@@ -47,3 +47,7 @@ button {
   color: grey;
   font-size: small;
 }
+.forecast {
+  font-size: 20px;
+  color: grey;
+}

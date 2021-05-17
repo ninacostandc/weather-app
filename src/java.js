@@ -13,7 +13,7 @@ let day = weekdays[now.getDay()];
 return `${day}, ${hours}:${minutes}`;
 }
 
-function displayForescast (response){
+function displayForecast (response){
   let forescast = response.data.daily;
   let forecastElement = document.querySelector ("#forecast");
   let forecastHTML= `<div class="row">`;
@@ -72,7 +72,7 @@ function showTemp (response){
   date.innerHTML= formatdate(response.data.dt*1000);
 
   icon.setAttribute ("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
-  getForecast (responde.data.coord)
+  getForecast (response.data.coord)
 }
 
 

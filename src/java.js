@@ -29,7 +29,7 @@ function displayForecast(response) {
             <span class="forecastmin">${Math.round(forecastDay.temp.min)}º   </span>
             <span class="forecastmax">${Math.round(forecastDay.temp.max)}º </span>
             </p> 
-            <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" id="weather-icon-forecast" width="15">
+            <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" id="weather-icon-forecast">
           </div>
         </div>
       </div>
@@ -105,7 +105,6 @@ function displaycelsiustemp (event){
   let temperature = document.querySelector ("#mainTemperature");
   temperature.innerHTML=Math.round(celsiustemp);
 }
-
 
 
 let celsiustemp=null;
